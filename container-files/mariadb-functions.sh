@@ -99,6 +99,15 @@ function show_db_status() {
   mysql -uroot -e "status"
 }
 
+function create_wp_set() {
+  echo "Creating WP database" && echo
+  mysql -uroot -e "CREATE DATABASE wordpress"
+  mysql -uroot -e "CREATE USER 'wordpress'@'localhost' IDENTIFIED BY 'wordpress'"
+  mysql -uroot -e "CREATE USER 'wordpress'@'%' IDENTIFIED BY 'wordpress'"
+  mysql -uroot -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost' WITH GRANT OPTION"
+  mysql -uroot -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'%' WITH GRANT OPTION"
+}
+
 function secure_and_tidy_db() {
   echo "Securing and tidying DB..."
   mysql -uroot -e "DROP DATABASE IF EXISTS test"

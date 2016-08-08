@@ -26,6 +26,7 @@ wait_for_db
 secure_and_tidy_db
 show_db_status
 create_admin_user
+create_wp_set
 
 # Do not exit this script untill mysqld_safe exits gracefully
 wait $MYSQLD_SAFE_PID
