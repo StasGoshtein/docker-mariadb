@@ -101,7 +101,7 @@ function show_db_status() {
 
 function create_wp_set() {
   echo "Creating WP database" && echo
-  mysql -uroot -e "CREATE DATABASE wordpress"
+  mysql -uroot -e "CREATE DATABASE IF NOT EXISTS wordpress"
   mysql -uroot -e "CREATE USER 'wordpress'@'localhost' IDENTIFIED BY 'wordpress'"
   mysql -uroot -e "CREATE USER 'wordpress'@'%' IDENTIFIED BY 'wordpress'"
   mysql -uroot -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost' WITH GRANT OPTION"
